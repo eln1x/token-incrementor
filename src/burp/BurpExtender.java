@@ -1,5 +1,7 @@
 package burp;
-
+import java.util.Scanner; 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Random;
 import java.util.List;
@@ -10,7 +12,6 @@ public class BurpExtender implements burp.IBurpExtender, burp.IHttpListener
     private burp.IExtensionHelpers helpers;
     private PrintWriter stdout;
     private PrintWriter stderr;
-
     private int counter = 0;
     private String nextToken = "";
     private String nextTimestamp = "";
@@ -22,15 +23,21 @@ public class BurpExtender implements burp.IBurpExtender, burp.IHttpListener
     // implement IBurpExtender
     //
     @Override
-    public void registerExtenderCallbacks(burp.IBurpExtenderCallbacks callbacks)
-    {
+    public void registerExtenderCallbacks(burp.IBurpExtenderCallbacks callbacks ){
         // obtain an extension helpers object
         helpers = callbacks.getHelpers();
         stdout = new PrintWriter(callbacks.getStdout(), true);
         stderr = new PrintWriter(callbacks.getStderr(),true);
 
         // set our extension name
-        callbacks.setExtensionName("IncrementMePlease");
+        callbacks.setExtensionName("IncrementMePlease_linux_tmp_counter_txt");
+	try{
+		String CounterInit = new Scanner(new File("/tmp/counter.txt")).next();
+		counter = Integer.parseInt(CounterInit);
+
+	}catch (FileNotFoundException ex)  {
+		counter = 0;
+	}
 
         // register ourselves as an HTTP listener
         callbacks.registerHttpListener(this);
