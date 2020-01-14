@@ -60,7 +60,7 @@ public class BurpExtender implements burp.IBurpExtender, burp.IHttpListener
 
                 int offset = reqBody.indexOf("IncrementMePlease");
                 stdout.println(offset);
-                reqBody = reqBody.replaceAll("IncrementMePlease", String.valueOf(randomint) + String.valueOf(counter));
+                reqBody = reqBody.replaceAll("IncrementMePlease", String.valueOf(counter));
                 counter++;
                 updated = true;
             }
