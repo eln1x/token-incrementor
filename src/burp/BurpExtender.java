@@ -30,7 +30,7 @@ public class BurpExtender implements burp.IBurpExtender, burp.IHttpListener
         stderr = new PrintWriter(callbacks.getStderr(),true);
 
         // set our extension name
-        callbacks.setExtensionName("IncrementMePlease_linux_tmp_counter_txt");
+        callbacks.setExtensionName("IncrementMePlease_windows_c_counter_txt");
 	try{
 		String CounterInit = new Scanner(new File("c:\\counter.txt")).next();
 		counter = Integer.parseInt(CounterInit);
