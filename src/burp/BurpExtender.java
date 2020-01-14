@@ -32,7 +32,7 @@ public class BurpExtender implements burp.IBurpExtender, burp.IHttpListener
         // set our extension name
         callbacks.setExtensionName("IncrementMePlease_linux_tmp_counter_txt");
 	try{
-		String CounterInit = new Scanner(new File("/tmp/counter.txt")).next();
+		String CounterInit = new Scanner(new File("c:\\counter.txt")).next();
 		counter = Integer.parseInt(CounterInit);
 
 	}catch (FileNotFoundException ex)  {
